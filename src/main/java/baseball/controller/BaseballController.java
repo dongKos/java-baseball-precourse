@@ -5,8 +5,6 @@ import baseball.model.User;
 import baseball.util.InputValidator;
 import baseball.view.GameView;
 
-import static baseball.constant.BaseballProperties.GAME_SIZE;
-
 public class BaseballController {
     private final GameView gameView = new GameView();
     private User user;
@@ -28,19 +26,16 @@ public class BaseballController {
         user = new User();
         computer = new Computer();
         computer.shuffle();
-        System.out.println(computer);
     }
 
     private void guess() {
-        System.out.print("숫자를 입력해주세요: ");
+        gameView.requireInput();
         String inputNumber = gameView.getInputNumber();
-
-        System.out.println(user.guessAndGetResult(inputNumber, computer.getAnswer()));
+        gameView.printGuessResult(user.guessAndGetResult(inputNumber, computer.getAnswer()));
     }
 
     private void askRestart() {
-        System.out.println(GAME_SIZE + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        System.out.println("게임을 새로 시작하려면1, 종료하려면 2를 입력하세요.");
+        gameView.printFinish();
         String restart = gameView.getInputNumber();
         InputValidator.validateRestartInput(restart);
 
@@ -48,6 +43,6 @@ public class BaseballController {
             start();
         }
 
-        System.exit(0);
+        gameView.exit();
     }
 }
