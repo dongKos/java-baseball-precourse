@@ -21,11 +21,11 @@ class ComputerTest {
 
         List<Ball> answer = computer.getAnswer();
 
-        Set<Integer> checkSet = new HashSet<>(
-                answer.stream()
-                        .map(ball -> ball.getValue())
-                        .collect(Collectors.toList())
-        );
+        Set<Integer> checkSet = new HashSet<>();
+
+        for(Ball ball : answer) {
+            checkSet.add(ball.getValue());
+        }
 
         assertEquals(GAME_SIZE, checkSet.size());
     }
