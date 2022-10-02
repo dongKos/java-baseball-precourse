@@ -1,6 +1,5 @@
 package baseball.model;
 
-
 import baseball.util.RandomNumberGenerator;
 
 import java.util.ArrayList;
@@ -10,31 +9,36 @@ import java.util.Set;
 
 import static baseball.constant.BaseballProperties.GAME_SIZE;
 
-public class Answer {
-    private List<Ball> balls = new ArrayList<> ();
+public class Computer {
 
-    public List<Ball> getBalls() {
-        return this.balls;
-    }
+    List<Ball> answer;
 
-    public Answer() {
-        for (int i = 0; i < GAME_SIZE; i++) {
-            balls.add(new Ball());
-        }
-    }
+    public Computer() {}
 
     public void shuffle() {
-        List<Integer> randomNumberList = new ArrayList<>(getUniqueIntegers());
+        answer = new ArrayList<>();
+        List<Integer> uniqueRandomNumbers = new ArrayList<>(getUniqueRandomNumbers());
         for (int i = 0; i < GAME_SIZE; i++) {
-            balls.get(i).initializeBall(randomNumberList.get(i));
+            answer.add(new Ball(uniqueRandomNumbers.get(i)));
         }
     }
 
-    private Set<Integer> getUniqueIntegers() {
+    private Set<Integer> getUniqueRandomNumbers() {
         Set<Integer> randomNumberSet = new HashSet<>();
         while (randomNumberSet.size() < GAME_SIZE) {
             randomNumberSet.add(RandomNumberGenerator.getRandomNumber());
         }
         return randomNumberSet;
+    }
+
+    public List<Ball> getAnswer() {
+        return this.answer;
+    }
+
+    @Override
+    public String toString() {
+        return "Computer{" +
+                "answer=" + answer +
+                '}';
     }
 }

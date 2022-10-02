@@ -1,8 +1,10 @@
 package baseball.view;
 
+import camp.nextstep.edu.missionutils.Console;
+
 public class GameView {
 
-    public void start() {
-        System.out.println("숫자를 입력해주세요.");
+    public String getInputNumber() {
+        return Console.readLine();
     }
 }

@@ -1,19 +1,37 @@
 package baseball.model;
 
-public class Ball {
-    private int value;
-    private BaseballStatus status;
+import java.util.Objects;
 
-    public Ball() {
-        this.status = BaseballStatus.NOTHING;
+public class Ball {
+    private final int value;
+
+
+    public Ball(int value) {
+        this.value = value;
     }
 
     public int getValue() {
         return this.value;
     }
 
-    public void initializeBall(int value) {
-        this.value = value;
-        this.status = BaseballStatus.NOTHING;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Ball ball = (Ball) o;
+        return value == ball.value;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(value);
+    }
+
+    @Override
+    public String toString() {
+        return "Ball{" +
+                "value=" + value +
+                '}';
     }
 }
