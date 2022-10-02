@@ -2,6 +2,7 @@ package baseball.controller;
 
 import baseball.model.Computer;
 import baseball.model.User;
+import baseball.util.InputValidator;
 import baseball.view.GameView;
 
 import static baseball.constant.BaseballProperties.GAME_SIZE;
@@ -41,6 +42,7 @@ public class BaseballController {
         System.out.println(GAME_SIZE + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면1, 종료하려면 2를 입력하세요.");
         String restart = gameView.getInputNumber();
+        InputValidator.validateRestartInput(restart);
 
         if(restart.equals("1")) {
             start();

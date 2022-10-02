@@ -1,5 +1,7 @@
 package baseball.model;
 
+import baseball.util.InputValidator;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +13,7 @@ public class User {
     Result result = new Result();
 
     public String guessAndGetResult(String inputString, List<Ball> answer) {
+        InputValidator.validateGuessNumber(inputString);
         initGuesses(inputString);
         checkAnswer(answer);
         return result.getResultString();
