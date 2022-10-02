@@ -8,9 +8,9 @@ import java.util.List;
 import static baseball.constant.BaseballProperties.GAME_SIZE;
 
 public class User {
-    List<Ball> guesses = new ArrayList<>();
+    private List<Ball> guesses = new ArrayList<>();
 
-    Result result = new Result();
+    private Result result = new Result();
 
     public String guessAndGetResult(String inputString, List<Ball> answer) {
         InputValidator.validateGuessNumber(inputString);

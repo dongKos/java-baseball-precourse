@@ -3,8 +3,8 @@ package baseball.model;
 import static baseball.constant.BaseballProperties.GAME_SIZE;
 
 public class Result {
-    int strikeCount;
-    int ballCount;
+    private int strikeCount;
+    private int ballCount;
 
     public void addStrike() {
         strikeCount++;
